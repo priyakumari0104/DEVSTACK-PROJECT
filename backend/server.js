@@ -10,7 +10,8 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ["https://devstack-frontend.onrender.com/", "http://localhost:5173"]
+  origin: ["https://devstack-frontend.onrender.com/"],
+  credentials: true
 }));
 
 // Database Connection
