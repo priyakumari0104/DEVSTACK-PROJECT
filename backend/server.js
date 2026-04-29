@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ["https://your-frontend-url.vercel.app", "http://localhost:5173"]
+  origin: ["https://devstack-frontend.onrender.com/", "http://localhost:5173"]
 }));
 
 // Database Connection
