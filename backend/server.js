@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ["https://devstack-frontend.onrender.com/"],
+  origin:"https://devstack-frontend.onrender.com",
   credentials: true
 }));
 
