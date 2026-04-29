@@ -1,0 +1,321 @@
+/* -- client/src/styles/dashboard.css -- */
+
+/* Custom Properties for Modern Colors */
+:root {
+    --bg-main: #141b2d;      /* Deep Navy Background */
+    --bg-card: #1f2a40;      /* Slightly Lighter Navy for Cards */
+    --text-primary: #ffffff;  /* Bright White */
+    --text-secondary: #a3a3a3; /* Dimmed Gray */
+    --accent: #2196f3;       /* Electric Blue for tags/links */
+    --accent-hover: #1976d2; /* Darker blue for hover */
+    --border: #313a4a;       /* Subdued border color */
+}
+
+/* Base Body Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+/* MAIN LAYOUT (Flex) */
+.main-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR STYLE --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-card);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border-right: 1px solid var(--border);
+}
+
+.logo-container {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar nav button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    width: 100%;
+    text-align: left;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.sidebar nav button:hover, .sidebar nav button.active {
+    background-color: #2c3e50;
+    color: var(--text-primary);
+}
+/* add button*/
+/* --- Interactive Add New Button --- */
+.add-btn {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden; /* For the shimmer effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+/* Hover Effect: Scale and Glow */
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+    background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%);
+}
+
+/* Active Effect: Push down */
+.add-btn:active {
+    transform: translateY(1px);
+}
+
+/* Shimmer Animation Effect */
+.add-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: none;
+}
+
+.add-btn:hover::after {
+    left: 120%;
+    transition: all 0.6s ease-in-out;
+}
+
+/* Logout Button (if you kept it in sidebar or header) */
+.logout-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 77, 77, 0.4);
+    color: #ff4d4d;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 77, 77, 0.1);
+    border-color: #ff4d4d;
+}
+
+
+/* --- MAIN CONTENT AREA STYLE --- */
+.content-area {
+    flex: 1;
+}
+
+/* Top Header Bar (With Profile/User Info) */
+.content-header {
+    background-color: var(--bg-card);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: flex-end; /* Push profile to right */
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.user-name {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.logout-btn {
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.logout-btn:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Dash Container (Where cards live) */
+.dash-container {
+    padding: 40px;
+}
+
+/* Resource Grid */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Modern Card Style */
+.resource-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card-tag {
+    background-color: #0b224c;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.card-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 60px; /* Limits description height */
+    overflow: hidden;
+}
+
+.card-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+.card-link:hover {
+    text-decoration: underline;
+}
+h2{
+    color: red;
+}
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    border: 1px solid var(--border);
+}
+.modal-content input, .modal-content textarea {
+    width: 100%; margin-bottom: 15px; padding: 10px;
+    background: #141b2d; border: 1px solid var(--border);
+    color: white; border-radius: 6px;
+}
+/* --- Header Styles --- */
+.content-header {
+    height: 60px;
+    background: var(--bg-card);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-icon {
+    width: 35px;
+    height: 35px;
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* --- Dropdown Menu --- */
+.profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.profile-dropdown p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.dropdown-logout {
+    width: 100%;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
