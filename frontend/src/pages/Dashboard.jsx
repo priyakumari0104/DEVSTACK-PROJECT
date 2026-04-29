@@ -20,7 +20,7 @@ function Dashboard() {
 
     const fetchResources = async () => {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/resources/all", {
+        const res = await fetch("https://devstack-api-shi6.onrender.com/api/resources/all", {
             headers: { "Authorization": token }
         });
         const data = await res.json();
@@ -30,7 +30,7 @@ function Dashboard() {
     const handleAddResource = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/resources/add", {
+        const res = await fetch("https://devstack-api-shi6.onrender.com/api/resources/add", {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",
